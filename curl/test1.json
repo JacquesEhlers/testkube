@@ -1,0 +1,9 @@
+{
+    "command": [
+      "curl",
+      "https://jsonplaceholder.typicode.com/todos/1",
+      "-H",
+      "'Accept: application/json'"
+    ],
+    "expected_status": "200"
+  }
