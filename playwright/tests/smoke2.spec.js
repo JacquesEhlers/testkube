@@ -2,15 +2,13 @@
 const { test, expect } = require('@playwright/test');
 
 test('Smoke 2 - has title', async ({ page }) => {
-  await page.goto('https://ndp.platform.nintextest.io/');
+  await page.goto('https://testing-playground.com//');
 
-  await expect(page).toHaveTitle(/NDP - Nintex Developer Portal/);
+  await expect(page).toHaveTitle(/Testing Playground/);
 
-  // Click on the SIGN IN button
-  await page.click('text=Sign In'); // or use the appropriate selector for the SIGN IN button
+  await page.fill('input#email"]', 'whatever@what.com');
 
-  // Optionally, you can add an assertion to verify that the click action led to the expected result
-  // For example, you might expect the URL to change or a specific element to appear
-  // await expect(page).toHaveURL(/login/); // Adjust this as per the actual URL or element change
+  const value = await page.inputValue('input#email');
+  expect(value).toBe('whatever@what.com');
 
 });
