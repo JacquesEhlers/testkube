@@ -6,11 +6,17 @@ test('Smoke 2 - has title', async ({ page }) => {
 
   await expect(page).toHaveTitle(/Swag Labs/);
 
-  await page.fill('input#user-name', 'standard_user');
+  await page.fill('input#user-name', "$USERNAME");
 
   const value = await page.inputValue('input#user-name');
-  expect(value).toBe('standard_user');
+  expect(value).toBe('sheep');
 
-  // Sleep for 60 seconds
-  await new Promise(resolve => setTimeout(resolve, 6000000));
+  await page.fill('input#password', "$PASSWORD");
+
+  const value = await page.inputValue('input#password');
+  expect(value).toBe('sheeper');
+
+
+  // // Sleep for 60 seconds
+  // await new Promise(resolve => setTimeout(resolve, 6000000));
 });
