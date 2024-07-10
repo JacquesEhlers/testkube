@@ -6,17 +6,20 @@ test('Smoke 2 - has title', async ({ page }) => {
 
   await expect(page).toHaveTitle(/Swag Labs/);
 
-  await page.fill('input#user-name', "$USERNAME");
+  // Use environment variables set at the container level
+  const username = process.env.USERNAME;
+  const password = process.env.PASSWORD;
 
-  const username = await page.inputValue('input#user-name');
-  expect(username).toBe('sheep');
+  await page.fill('input#user-name', username);
 
-  await page.fill('input#password', "$PASSWORD");
+  const inputUsername = await page.inputValue('input#user-name');
+  expect(inputUsername).toBe('sheep');
 
-  const password = await page.inputValue('input#password');
-  expect(password).toBe('sheeper');
+  await page.fill('input#password', password);
 
+  const inputPassword = await page.inputValue('input#password');
+  expect(inputPassword).toBe('sheeper');
 
   // // Sleep for 60 seconds
-  // await new Promise(resolve => setTimeout(resolve, 6000000));
+  // await new Promise(resolve => setTimeout(resolve, 60000));
 });
