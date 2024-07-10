@@ -11,4 +11,6 @@ test('Smoke 2 - has title', async ({ page }) => {
   const value = await page.inputValue('input#user-name');
   expect(value).toBe('standard_user');
 
+  // Sleep for 60 seconds
+  await new Promise(resolve => setTimeout(resolve, 60000));
 });
